@@ -3,6 +3,12 @@ import AssignmentsDao from "./dao.js";
 export default function AssignmentsRoutes(app) {
     const dao = AssignmentsDao();
 
+    const findAssignmentById = async (req, res) => {
+        const { assignmentId } = req.params;
+        const assignment = await dao.findAssignmentById(assignmentId);
+        res.json(assignment);
+    };
+
     const findAssignmentsForCourse = async (req, res) => {
         const { courseId } = req.params;
         const assignments = await dao.findAssignmentsForCourse(courseId);
@@ -32,6 +38,7 @@ export default function AssignmentsRoutes(app) {
         res.send(status);
     };
 
+    app.get("/api/assignments/:assignmentId", findAssignmentById);
     app.put("/api/assignments/:assignmentId", updateAssignment);
     app.delete("/api/assignments/:assignmentId", deleteAssignment);
     app.post("/api/courses/:courseId/assignments", createAssignmentForCourse);

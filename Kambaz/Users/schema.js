@@ -16,6 +16,20 @@ const userSchema = new mongoose.Schema(
         section: String,
         lastActivity: Date,
         totalActivity: String,
+        quizzesTaken: [
+            {
+                _id: String,
+                attemptsUsed: Number,
+                score: Number,
+                answers: [
+                    {
+                        _id: String, // id of question
+                        answer: String,
+                        answerTrueFalse: Boolean,
+                    },
+                ],
+            },
+        ],
     },
     { collection: "users" },
 );

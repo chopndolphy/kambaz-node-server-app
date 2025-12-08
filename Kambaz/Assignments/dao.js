@@ -2,6 +2,10 @@ import { v4 as uuidv4 } from "uuid";
 import model from "./model.js";
 
 export default function AssignmentsDao() {
+    function findAssignmentById(assignmentId) {
+        return model.findById(assignmentId);
+    }
+
     function findAssignmentsForCourse(courseId) {
         return model.find({ course: courseId });
     }
@@ -20,6 +24,7 @@ export default function AssignmentsDao() {
     }
 
     return {
+        findAssignmentById,
         findAssignmentsForCourse,
         createAssignment,
         deleteAssignment,

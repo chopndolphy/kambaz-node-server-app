@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import EnrollmentsDao from "../Enrollments/dao.js";
 
 export default function UsersDao() {
-    const enrollmentsDao = EnrollmentsDao(); // Add this
+    const enrollmentsDao = EnrollmentsDao();
 
     const createUser = (user) => {
         const newUser = { ...user, _id: uuidv4() };
